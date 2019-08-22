@@ -1,0 +1,77 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}口コミ入力ページ{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+    <div class="page-header text-center">
+        <h1>口コミ入力</h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <form id="loginForm" method="POST" action="/company-import/">
+                            {% if error %}
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">{{ error }}</div>
+                                </div>
+                            {% endif %}
+
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 会社名</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ Company }}" required title="Please enter your name" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 年齢</label>
+                                <input type="text" class="form-control" id="age" name="age" value="{{ age }}" required title="Please enter your gender">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 性別</label>
+                                <select id = "gendor" name = "gendor">
+                                    <option value="男性">男性</option>
+                                    <option value="女性">女性</option>
+                                    <option value="その他">その他</option>option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span>評価</label>
+                                <select id = "evalute" name = "evalute">
+                                    <option value="★">★</option>
+                                    <option value="★★">★★</option>
+                                    <option value="★★★">★★★</option>
+                                    <option value="★★★★">★★★★</option>
+                                    <option value="★★★★★">★★★★★</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="control-label">口コミ</label>
+                                <textarea class="form-control" rows="10" id="review" name="review" value="{{ review }}" required title="Please enter your review"></textarea>
+                          </div>
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-info btn-block">完了</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}
