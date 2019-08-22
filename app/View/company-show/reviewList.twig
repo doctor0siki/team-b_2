@@ -11,7 +11,15 @@
 
 {#ここから表示したい情報を記載します。#}
 {% block page_content %}
-株式会社かつらのレビュー
+{% for Company in reviews %}
+{{Company.name}}のレビュー
+{% for rev in Company %}
+<li>
+  {{rev.review}}
+</li>
+{% endfor %}
+
+{% endfor %}
 {% endblock %}
 
 {#共通フッタとして追記したい情報を記載します。#}
