@@ -38,8 +38,7 @@
                     <td class="align-middle" scope="col">{{ act.gendor }}</td>
                     <td class="align-middle" scope="col">{{ act.evalute }}</td>
                     <td class="align-middle" scope="col">
-                      <textarea class="form-control" rows="5" readonly><{{ act.review }}
-                      </textarea></td>
+                      {{ act.review | nl2br}}</td>
 
                   </tr>
                   </tbody>
@@ -67,8 +66,7 @@
                       <td class="align-middle" scope="col">{{ row.gendor }}</td>
                       <td class="align-middle" scope="col">{{ row.evalute }}</td>
                       <td class="align-middle" scope="col">
-                        <textarea class="form-control" rows="5" readonly><{{ row.review }}
-                        </textarea></td>
+                        {{ row.review | nl2br}}</td>
                     </tr>
                     {% endfor %}
                     </tbody>

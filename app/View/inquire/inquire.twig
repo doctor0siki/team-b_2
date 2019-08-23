@@ -1,0 +1,86 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}問い合わせ{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+{# https://www.otsuka.co.jp/contacts/inquiry-form/form/?type=PR #}
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+    <div class="page-header text-center">
+        <h1>問い合わせ</h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <form id="loginForm" method="POST" action="/inquire/">
+                            {% if error %}
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">{{ error }}</div>
+                                </div>
+                            {% endif %}
+
+                            <div class="form-group">
+                                <input type="checkbox" id="agree"><label for="agree">個人情報保護法に同意します</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 会社名</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{name}}" required title="Please enter your CompanyName" placeholder="株式会社******">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="control-label"> <span class="badge badge-danger">必須</span> メールアドレス</label>
+                                <input type="text" class="form-control" id="email" name="email" value="{{ email }}" placeholder="example@gmail.com"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required title="Please enter your mailadress">
+                            </div>
+
+                            <label for="email" class="control-label"> <span class="badge badge-danger">必須</span>  電話番号 </label>
+                            <input type="tel"  class="form-control" id ="phonenumber" name="phonenumber" value="{{phonenumber}}"  pattern="\d{1,5}-\d{1,4}-\d{4,5}" placeholder="00-0000-0000"
+                             required title="Please enter your phonenumber">
+
+                            <div class="form-group">
+                              <p for="text" class="control-label"><span class="badge badge-danger">任意</span> 名前 </p>
+                              <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+                                <label for="text" class="control-label"> 名 </label>
+                                <input type="text" class="form-control" id="username" name="username" value="{{username}}" required title="Please enter your name">
+                                <label for="text" class="control-label"> 姓 </label>
+                                <input type="text" class="form-control" id="userfamilyname" name="userfamilyname" value="{{userfamilyname}}" required title="Please enter your famillyname">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 年齢</label>
+                                <input type="text" class="form-control" id="age" name="age" value="{{ age }}" pattern="[1-9][0-9]*" required title="Please enter your age">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="control-label"> <span class="badge badge-danger">必須</span> 性別</label>
+                                <select id = "gendor" name = "gendor">
+                                    <option value="男性">男性</option>
+                                    <option value="女性">女性</option>
+                                    <option value="その他">その他</option>option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="control-label">内容</label>
+                                <textarea class="form-control" rows="10" id="review" name="review" value="{{ review }}" required title="Please enter your content"></textarea>
+                          </div>
+
+
+                            <button type="submit" class="btn btn-info btn-block">完了</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}
