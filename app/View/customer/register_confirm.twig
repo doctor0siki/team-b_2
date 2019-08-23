@@ -1,0 +1,48 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}お客様情報入力{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+    <div class="page-header text-center my-4">
+        <h1>入力情報のご確認</h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <form id="register_confirm" method="POST" action="/customer/register_done">
+                            {% for key, value in data %}
+                                <input type="hidden" name="{{ key }}" value="{{ value }}">
+                            {% endfor %}
+                            <table style="font-size: 125%;">
+                                {% for key, value in data %}
+                                    <tr>
+                                        <th><div class="mx-4 my-2">{{ item_names[key] }}</div></th>
+                                        <td><div class="mx-4 my-2">{{ value }}</div></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            <p class="text-right">
+                                <a href="/customer/register">
+                                    <button type="button" class="btn btn btn-outline-secondary mt-4 mr-4">戻る</button>
+                                </a>
+                                <button type="submit" class="btn btn btn-success mt-4">登録</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}

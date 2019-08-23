@@ -10,6 +10,6 @@ $app->get('/logout/', function (Request $request, Response $response) {
     $this->session::destroy();
 
     //TOPへリダイレクト
-    return $response->withRedirect('/');
+    return $response->withRedirect('/login');
 
 });
