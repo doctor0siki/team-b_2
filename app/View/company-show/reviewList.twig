@@ -1,0 +1,61 @@
+
+{#レイアウトを継承します#}
+{% extends "layout/review.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}商品一覧{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+    <div class="page-header text-center"  >
+        <h1 class="review_back">口コミ</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- Boostrapのテーブルタグについては、https://cccabinet.jpn.org/bootstrap4/content/tables 参照 -->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                    <tr >
+                        <th class="review_back"scope="col">かつら会社</th>
+                        <th scope="col">人</th>
+                        <th scope="col">評価</th>
+                        <th scope="col">口コミ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {# 取得した結果分ループする処理です#}
+                    {# コントローラで指定した $data["result"] は Twigでは result として扱えます #}
+                    {# for文でresultの中の一次元目の配列をループで回す形となります #}
+                    {# ループ処理中の1行はrowの中に入りますので、このループ中はrow.カラム名で情報を表示することが可能です #}
+                    {% for company in reviews %}
+                    {% for key, row in company %}
+                        <tr>
+                           <td class="align-middle" scope="col">
+                             {{row.name}}
+                           </td>
+                           <td class="align-middle" scope="col">
+                             {{row.age}}歳{{row.gendor}}
+                           </td>
+                            <td class="align-middle" scope="col" >
+                                <p class="review_evalute">
+                                  {{row.evalute}}
+                                </p>
+                            </td>
+                            <td class="align-middle" scope="col">{{ row.review }}</td>
+                        </tr>
+                    {% endfor %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}

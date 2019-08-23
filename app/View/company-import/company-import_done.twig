@@ -1,0 +1,85 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}口コミありがとう{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+    <div class="page-header text-center">
+        <h1>口コミありがとうございました。</h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <div class="row">
+                <div class="col-md-12">
+
+                  <div class="table-responsive">
+                    <div class ="text-center">あなたの口コミ</div>
+                    <table class="table table-striped">
+                  <thead class="thead-light">
+                    <tr>
+                    <th scope="col">会社名</th>
+                    <th scope="col">年齢</th>
+                    <th scope="col">性別</th>
+                    <th scope="col">評価</th>
+                    <th scope="col">口コミ</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td class="align-middle" scope="col">{{ act.name }}</td>
+                    <td class="align-middle" scope="col">{{ act.age }}</td>
+                    <td class="align-middle" scope="col">{{ act.gendor }}</td>
+                    <td class="align-middle" scope="col">{{ act.evalute }}</td>
+                    <td class="align-middle" scope="col">
+                      {{ act.review | nl2br}}</td>
+
+                  </tr>
+                  </tbody>
+                </table>
+
+                <p><div class = "text-center">
+                  <p class = "control-label">最近の口コミを表示します</p>
+                </div></p>
+
+                      <table class="table table-striped">
+                    <thead class="thead-light">
+                      <tr>
+                      <th scope="col">会社名</th>
+                      <th scope="col">年齢</th>
+                      <th scope="col">性別</th>
+                      <th scope="col">評価</th>
+                      <th scope="col">口コミ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in result %}
+                    <tr>
+                      <td class="align-middle" scope="col">{{ row.name }}</td>
+                      <td class="align-middle" scope="col">{{ row.age }}</td>
+                      <td class="align-middle" scope="col">{{ row.gendor }}</td>
+                      <td class="align-middle" scope="col">{{ row.evalute }}</td>
+                      <td class="align-middle" scope="col">
+                        {{ row.review | nl2br}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                  <p class="text-center">
+                      <a href="/" class="btn btn-info">TOPへ</a>
+                  </p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}
