@@ -1,6 +1,6 @@
 <?php
 
-use Model\Dao\Item;
+use Model\Dao\Customer;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -16,17 +16,34 @@ use Slim\Http\Response;
  */
 $app->get('/item/detail/{item_id}', function (Request $request, Response $response, $args) {
 
-
     $data = [];
+
+    $data['item_names'] = [
+        'name' => '名前',
+        'age' => '年齢',
+        'gender' => '性別',
+        'mail' => 'メールアドレス',
+        'tel' => '電話番号',
+        'zipcode' => '郵便番号',
+        'address' => '住所',
+        'wig_type' => '装着範囲',
+        'wig_material' => '材質',
+        'wig_hair_quality' => '髪質',
+        'wig_color' => '髪色',
+        'budget' => '予算',
+        'note' => 'その他・ご要望'
+    ];
 
     //URLパラメータのitem_idを取得します。
     $item_id = $args["item_id"];
 
     //アイテムDAOをインスタンス化します。
-    $item = new Item($this->db);
+    $customer = new Customer($this->db);
 
     //URLパラメータのitem_id部分を引数として渡し、戻り値をresultに格納します
-    $data["result"] = $item->getItem($item_id);
+    $data["result"] = $customer->getItem($item_id);
+    unset($data['result']['id']);
+    unset($data['result']['created_at']);
 
     // Render index view
     return $this->view->render($response, 'item/detail.twig', $data);

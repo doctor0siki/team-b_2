@@ -1,20 +1,26 @@
 <?php
 
-use Model\Dao\Item;
+use Model\Dao\Customer;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 // 商品一覧を出すコントローラです
-$app->get('/item/list/', function (Request $request, Response $response) {
+$app->get('/item/list', function (Request $request, Response $response) {
 
     $data=[];
 
-    //アイテムDAOをインスタンス化します。
-    $item = new Item($this->db);
+    //顧客DAOをインスタンス化します。
+    $customer = new Customer($this->db);
+    $created_at = $this->session['user_info']['created_at'];
 
-    //アイテム一覧を取得し、戻り値をresultに格納します
-    $data["result"] = $item->getItemList();
+    //顧客情報一覧を取得し、戻り値をresultに格納します
+    $data["result"] = $customer->getItemList();
 
+    foreach ($data['result'] as $key => $item) {
+        if ($created_at > $item['created_at']) {
+            unset($data['result'][$key]);
+        }
+    }
     // Render index view
     return $this->view->render($response, 'item/list.twig', $data);
 
