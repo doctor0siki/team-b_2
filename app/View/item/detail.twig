@@ -2,7 +2,7 @@
 {% extends "layout/layout.twig" %}
 
 {#HTMLのタイトルを定義します。#}
-{% block title %}{{ result.name }}の詳細情報{% endblock %}
+{% block title %}{{ result.name }}様の詳細情報{% endblock %}
 
 {# このページに適用させたいスタイルシートを指定します #}
 {% block header_scripts_add %}
@@ -23,7 +23,7 @@
             {% endfor %}
         </table>
         <div class="text-right my-4">
-            <button type="button" class="btn btn-primary" onclick="location.href='/item/list'">お客様一覧ページへ</button>
+            <button type="button" class="btn btn-success" onclick="location.href='/item/list'">お客様一覧ページへ</button>
         </div>
     </div>
 {% endblock %}

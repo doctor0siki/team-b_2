@@ -2,7 +2,7 @@
 {% extends "layout/layout.twig" %}
 
 {#HTMLのタイトルを定義します。#}
-{% block title %}商品一覧{% endblock %}
+{% block title %}お客様一覧{% endblock %}
 
 {# このページに適用させたいスタイルシートを指定します #}
 {% block header_scripts_add %}
@@ -49,7 +49,7 @@
                                     <td class="align-middle" scope="col">{{ row.gender }}</td>
                                     <td class="align-middle" scope="col">{{ row.budget }}</td>
                                     <td class="align-middle text-right" scope="col">
-                                        <button type="button" class="btn btn-primary" onclick="location.href='/item/detail/{{ row.id }}'">詳細</button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='/item/detail/{{ row.id }}'">詳細</button>
                                     </td>
                                 </tr>
                             {% endfor %}
