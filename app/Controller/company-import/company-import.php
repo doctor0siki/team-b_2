@@ -46,4 +46,5 @@ $app->post('/company-import/', function (Request $request, Response $response) {
     // 登録完了ページを表示します。
     return $this->view->render($response, 'company-import/company-import_done.twig', $data_s);
 
+
 });
