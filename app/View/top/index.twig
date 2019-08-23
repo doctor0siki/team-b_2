@@ -141,7 +141,7 @@
         </div>
 
 
-{#	{% include '' %}	#}
+	{% include 'company-show/reviewList.twig' %}	
 
 
 	<div class="box mt-4 mb-4">	
@@ -154,11 +154,7 @@
                 <div class="card mx-auto">
                     <div class="card-body">
 		        <p class="border-bottom" style="font-size:28px;">カツラの相場</p>
-			<a>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</a>
+			<a>一般的にオーダーメイドだと２０万円前後、セミオーダーでは３万円前後からが相場となっています。質の高いものになれば３０万円４０万円とどうしても高くなってしまいます。決して安いお買い物ではありません。高ければいいというわけではなく、自分に合ったものを購入するのが大切です。カツラマッチではあなたの望んでいるカツラと費用を提示することで、ご予算内でご希望に合ったカツラを見つけられます。初めてカツラを買う方は上記の値段を参考にご予算を提示するといいかもしれません。</a>
 
 		    </div>
                 </div>
@@ -171,7 +167,7 @@
                 <div class="col-lg-3 mx-auto d-block">
                     <div class="card border-0">
                        <div class="card-body">
-                            <button href="#" type="button" class="btn btn-secondary btn-lg mx-auto d-block" style="width: 200px;">お問い合わせ</button>
+                            <button onclick="location.href='/inquire'" type="button" class="btn btn-secondary btn-lg mx-auto d-block" style="width: 200px;">お問い合わせ</button>
 
                         </div>
                     </div>
@@ -180,7 +176,7 @@
                 <div class="col-lg-3 mx-auto d-block">
                     <div class="card border-0">
                         <div class="card-body">
-			    <button href="#" type="button" class="btn btn-secondary btn-lg mx-auto d-block" style="width: 200px;">ポリシー</button>
+			    <button onclick="location.href='/PrivacyPolicy'" type="button" class="btn btn-secondary btn-lg mx-auto d-block" style="width: 200px;">ポリシー</button>
                             
                         </div>
                     </div>
