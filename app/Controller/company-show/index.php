@@ -26,11 +26,5 @@ $app->get('/company-show/', function (Request $request, Response $response) {
     $company[$value["name"]] = $reviewList->getReviewList($value["name"]);
   }
   $data_review["reviews"] = $company;
-  //foreach($data["companies"] as $i => $company) {
-  //$data["result$index"] = $reviewList->getReviewList($company);
-  //}
-  //レビュー一覧を取得し、戻り値をresultに格納します
-
-  // Render index view
   return $this->view->render($response, 'company-show/reviewList.twig', $data_review);
 });
