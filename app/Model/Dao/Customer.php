@@ -27,7 +27,7 @@ class Customer extends Dao
     public function getItem($id)
     {
 
-        //全件取得するクエリを作成
+        //1件取得するクエリを作成
         $sql = "select * from customer where id =:id";
 
         // SQLをプリペア
