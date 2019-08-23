@@ -53,5 +53,5 @@ $app->POST('/customer/register_done', function (Request $request, Response $resp
 
     $this->session::destroy();
 
-    return $response->withRedirect('/');
+    return $this->view->render($response, 'customer/register_done.twig');
 });
