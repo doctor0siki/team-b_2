@@ -25,15 +25,16 @@ $app->get('/company-show/', function (Request $request, Response $response) {
     $data["companies"] = $CompanyList->getCompanyList();
     //レビューDAOをインスタンス化します。
     $reviewList = new Company($this->db);
-    $data_review["reviews"] = $reviewList->getCompanyList();
 //    dd($data_review["reviews"]);
+$data_a = $reviewList->getCompanyList();
 
 
 
-    foreach($data_review["reviews"] as $key => $value) {
+    foreach($data_a as $key => $value) {
       //unset($company);
       $company[$value["name"]] = $reviewList->getReviewList($value["name"]);
     }
+    $data_review["reviews"] = $company;
     //foreach($data["companies"] as $i => $company) {
       //$data["result$index"] = $reviewList->getReviewList($company);
     //}

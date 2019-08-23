@@ -12,13 +12,13 @@
 {#ここから表示したい情報を記載します。#}
 {% block page_content %}
 {% for Company in reviews %}
-{{Company.name}}のレビュー
-{% for rev in Company %}
+{% for key, value in Company %}
+{{value.name}}のレビュー
 <li>
-  {{rev.review}}
+  {{ value.evalute  }}
+  {{ value.review  }}
 </li>
 {% endfor %}
-
 {% endfor %}
 {% endblock %}
 
