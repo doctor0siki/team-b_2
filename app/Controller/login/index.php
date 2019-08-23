@@ -5,7 +5,7 @@ use Slim\Http\Response;
 use Model\Dao\User;
 
 // ログイン画面コントローラ
-$app->get('/login/', function (Request $request, Response $response) {
+$app->get('/login', function (Request $request, Response $response) {
 
     //GETされた内容を取得します。
     $data = $request->getQueryParams();
@@ -16,7 +16,7 @@ $app->get('/login/', function (Request $request, Response $response) {
 });
 
 // ログインロジックコントローラ
-$app->post('/login/', function (Request $request, Response $response) {
+$app->post('/login', function (Request $request, Response $response) {
 
     //POSTされた内容を取得します
     $data = $request->getParsedBody();
@@ -37,7 +37,7 @@ $app->post('/login/', function (Request $request, Response $response) {
         $this->session->set('user_info', $result);
 
         //TOPへリダイレクト
-        return $response->withRedirect('/');
+        return $response->withRedirect('/item/list');
 
     } else {
         //入力項目がマッチしない場合エラーを出す
