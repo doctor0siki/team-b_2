@@ -53,7 +53,7 @@ class Company extends Dao
     public function getReviewList($CompanyName)
     {
         //全件取得するクエリを作成
-        $sql = "select * from company where name = :name ";
+        $sql = "select * from company where name = :name limit 5";
 
         // SQLをプリペア
         $statement = $this->db->prepare($sql);

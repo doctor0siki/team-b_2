@@ -11,8 +11,8 @@
 
 {#ここから表示したい情報を記載します。#}
 {% block page_content %}
-    <div class="page-header text-center">
-        <h1>口コミ</h1>
+    <div class="page-header text-center"  >
+        <h1 class="review_back">口コミ</h1>
     </div>
     <div class="container">
         <div class="row">
@@ -21,7 +21,7 @@
                 <table class="table table-striped">
                     <thead class="thead-light">
                     <tr >
-                        <th scope="col">かつら会社</th>
+                        <th class="review_back"scope="col">かつら会社</th>
                         <th scope="col">人</th>
                         <th scope="col">評価</th>
                         <th scope="col">口コミ</th>
@@ -39,10 +39,12 @@
                              {{row.name}}
                            </td>
                            <td class="align-middle" scope="col">
-                             {{row.age}}代{{row.gendor}}
+                             {{row.age}}歳{{row.gendor}}
                            </td>
-                            <td class="align-middle" scope="col">
-                                {{row.evalute}}
+                            <td class="align-middle" scope="col" >
+                                <p class="review_evalute">
+                                  {{row.evalute}}
+                                </p>
                             </td>
                             <td class="align-middle" scope="col">{{ row.review }}</td>
                         </tr>
