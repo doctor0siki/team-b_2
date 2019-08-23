@@ -5,32 +5,32 @@ use Model\Dao\Company;
 
 $app->get('/company-show/', function (Request $request, Response $response) {
 
-    $data=[];
+  $data=[];
 
-    $CompanyList = new Company($this->db);
+  $CompanyList = new Company($this->db);
 
-    $CompanyGroup = new Company($this->db);
-    $data["group"] = $CompanyGroup->getCompanyGroup();
-    $data_review = [[]];
+  $CompanyGroup = new Company($this->db);
+  $data["group"] = $CompanyGroup->getCompanyGroup();
+  $data_review = [[]];
 
-    $data["companies"] = $CompanyList->getCompanyList();
-    //レビューDAOをインスタンス化します。
-    $reviewList = new Company($this->db);
-//    dd($data_review["reviews"]);
-$data_a = $reviewList->getCompanyList();
+  $data["companies"] = $CompanyList->getCompanyList();
+  //レビューDAOをインスタンス化します。
+  $reviewList = new Company($this->db);
+  //    dd($data_review["reviews"]);
+  $data_a = $reviewList->getCompanyList();
 
 
 
-    foreach($data_a as $key => $value) {
-      //unset($company);
-      $company[$value["name"]] = $reviewList->getReviewList($value["name"]);
-    }
-    $data_review["reviews"] = $company;
-    //foreach($data["companies"] as $i => $company) {
-      //$data["result$index"] = $reviewList->getReviewList($company);
-    //}
-    //レビュー一覧を取得し、戻り値をresultに格納します
+  foreach($data_a as $key => $value) {
+    //unset($company);
+    $company[$value["name"]] = $reviewList->getReviewList($value["name"]);
+  }
+  $data_review["reviews"] = $company;
+  //foreach($data["companies"] as $i => $company) {
+  //$data["result$index"] = $reviewList->getReviewList($company);
+  //}
+  //レビュー一覧を取得し、戻り値をresultに格納します
 
-    // Render index view
-    return $this->view->render($response, 'company-show/reviewList.twig', $data_review);
+  // Render index view
+  return $this->view->render($response, 'company-show/reviewList.twig', $data_review);
 });
