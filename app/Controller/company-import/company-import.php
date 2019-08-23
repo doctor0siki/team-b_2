@@ -26,20 +26,6 @@ $app->post('/company-import/', function (Request $request, Response $response) {
     //ユーザーDAOをインスタンス化
     $company = new Company($this->db);
 
-/*
-    //入力されたメールアドレスの会員が登録済みかどうかをチェックします
-    if ($company->select(array("email" => $data["email"]), "", "", 1, false)) {
-
-        //入力項目がマッチしない場合エラーを出す
-        $data["error"] = "このメールアドレスは既に会員登録済みです";
-
-        // 入力フォームを再度表示します
-        return $this->view->render($response, 'register/register.twig', $data);
-
-    }
-*/
-    //DB登録に必要ない情報は削除します
-    //unset($data["password_re"]);
 
     //DBに登録をする。戻り値は自動発番されたIDが返ってきます
     $id = $company->insert($data);
@@ -49,7 +35,6 @@ $app->post('/company-import/', function (Request $request, Response $response) {
 
     $data_s = [];
 
-    //$param = [];
     //セッションにユーザー情報を登録（ログイン処理）
     $this->session->set('user_info', $result);
     //$param["datetime"] = $data["datetime"];
