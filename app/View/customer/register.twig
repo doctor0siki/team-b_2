@@ -1,0 +1,157 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}お客様情報入力{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+{% endblock %}
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+    <div class="page-header text-center my-4">
+        <h1>情報入力</h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <form id="customer-register" method="POST" action="/customer/confirm">
+                            {% if error %}
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">{{ error }}</div>
+                                </div>
+                            {% endif %}
+                            <div class="my-3">
+                                <h2>お客様情報</h2>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="control-label"> <span class="badge badge-danger mr-3">必須</span>名前</label>
+                                <input type="name" class="form-control" id="name" name="name" value="{{ name }}" required title="Please enter you name" placeholder="例) 山田太郎">
+                            </div>
+                            <div class="form-group">
+                                <label for="age"><span class="badge badge-danger mr-3">必須</span>年齢</label>
+                                <select class="form-control" id="age" name="age" style="width: 30%" required title="Please enter you age" >
+                                    {% if not age %}
+                                        <option value="" disabled selected style="display: none;">選択してください</option>
+                                    {% endif %}
+                                    {% for value in range(1, 100) %}
+                                        <option value="{{ value }}" {% if age == value %} selected {% endif %}>{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender"><span class="badge badge-danger mr-3">必須</span>性別</label>
+                                <select class="form-control" id="gender" name="gender" style="width: 30%" required title="Please enter you gender" >
+                                    {% if not gender %}
+                                        <option value="" disabled selected style="display: none;">選択してください</option>
+                                    {% endif %}
+                                    <option value="男性" {% if gender == '男性' %}selected{% endif %}>男性</option>
+                                    <option value="女性" {% if gender == '女性' %}selected{% endif %}>女性</option>
+                                    <option value="その他" {% if gender == 'その他' %}selected{% endif %}>その他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tel" class="control-label"> <span class="badge badge-danger mr-3">必須</span>電話番号</label>
+                                <input type="tel" class="form-control" id="tel" name="tel" value="{{ tel }}" required title="Please enter your tel no" placeholder="例) 03-1234-5678">
+                            </div>
+                            <div class="form-group">
+                                <label for="mail" class="control-label"> <span class="badge badge-danger mr-3">必須</span>メールアドレス</label>
+                                <input type="mail" class="form-control" id="mail" name="mail" value="{{ mail }}" required title="Please enter you email" placeholder="例) example@gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode" class="control-label"> <span class="badge badge-danger mr-3">必須</span>郵便番号</label>
+                                <input type="text" class="form-control " id="zipcode" name="zipcode" value="{{ zipcode }}" style="width: 30%" required title="Please enter your zipcode" placeholder="例) 110-0011">
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="control-label"> <span class="badge badge-danger mr-3">必須</span>住所</label>
+                                <input type="text" class="form-control" id="address" name="address" value="{{ address }}" required title="Please enter your address" placeholder="例) 東京都千代田区霞が関２丁目１−１">
+                            </div>
+
+                            <div class="mt-4 mb-3">
+                                <h2>希望するかつら、ウィッグ情報</h2>
+                            </div>
+                            <div class="form-group">
+                                <label for="wig_type"><span class="badge badge-danger mr-3">必須</span>装着範囲</label>
+                                <select class="form-control" id="wig_type" name="wig_type" style="width: 30%" required title="Please enter you type" >
+                                    {% if not wig_type %}
+                                        <option value="" disabled selected style="display: none;">選択してください</option>
+                                    {% endif %}
+                                    <option value="部分" {% if wig_type == '部分' %}selected{% endif %}>部分</option>
+                                    <option value="全体" {% if wig_type == '全体' %}selected{% endif %}>全体</option>
+                                    <option value="その他" {% if wig_type == 'その他' %}selected{% endif %}>その他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="wig_material"><span class="badge badge-danger mr-3">必須</span>材質</label>
+                                <select class="form-control" id="wig_material" name="wig_material" style="width: 30%" required title="Please enter you material" >
+                                    {% if not wig-material %}
+                                        <option value="" disabled selected style="display: none;">選択してください</option>
+                                    {% endif %}
+                                    <option value="シリコン" {% if wig_material == 'シリコン' %} selected {% endif %}>シリコン</option>
+                                    <option value="コーティング" {% if wig_material == 'コーティング' %} selected {% endif %}>コーティング</option>
+                                    <option value="その他" {% if wig_material == 'その他' %} selected {% endif %}>その他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="wig-hair-quality"><span class="badge badge-danger mr-3">必須</span>髪質</label>
+                                <select class="form-control" id="wig_hair_quality" name="wig_hair_quality" style="width: 30%" required title="Please enter you quality" >
+                                    <option value="" disabled selected style="display: none;">選択してください</option>
+                                    <option value="人毛" {% if wig_hair_quality == '人毛' %} selected {% endif %}>人毛</option>
+                                    <option value="人工毛" {% if wig_hair_quality == '人工毛' %} selected {% endif %}>人工毛</option>
+                                    <option value="ミックス毛" {% if wig_hair_quality == 'ミックス毛' %} selected {% endif %}>ミックス毛</option>
+                                    <option value="その他" {% if wig_hair_quality == 'その他' %} selected {% endif %}>その他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="wig-color"><span class="badge badge-danger mr-3">必須</span>髪色</label>
+                                <select class="form-control" id="wig_color" name="wig_color" style="width: 30%" required title="Please enter you color" >
+                                    <option value="" disabled selected style="display: none;">選択してください</option>
+                                    <option value="黒色" {% if wig_color == '黒色' %} selected {% endif %}>黒色</option>
+                                    <option value="茶色" {% if wig_color == '茶色' %} selected {% endif %}>茶色</option>
+                                    <option value="金色" {% if wig_color == '金色' %} selected {% endif %}>金色</option>
+                                    <option value="その他" {% if wig_color == 'その他' %} selected {% endif %}>その他</option>
+                                </select>
+                            </div>
+                            <div class="mt-4 mb-3">
+                                <h2>ご予算</h2>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget"><span class="badge badge-danger mr-3">必須</span>予算</label>
+                                <select class="form-control" id="budget" name="budget" style="width: 30%" required title="Please enter you color" >
+                                    <option value="" disabled selected style="display: none;">選択してください</option>
+                                    <option value="10,000円未満" {% if budget == '10,000円未満' %} selected {% endif %}>10,000円未満</option>
+                                    <option value="50,000円未満" {% if budget == '50,000円未満' %} selected {% endif %}>50,000円未満</option>
+                                    <option value="100,000円未満" {% if budget == '100,000円未満' %} selected {% endif %}>100,000円未満</option>
+                                    <option value="150,000円未満" {% if budget == '150,000円未満' %} selected {% endif %}>150,000円未満</option>
+                                    <option value="200,000円未満" {% if budget == '200,000円未満' %} selected {% endif %}>200,000円未満</option>
+                                    <option value="250,000円未満" {% if budget == '250,000円未満' %} selected {% endif %}>250,000円未満</option>
+                                    <option value="300,000円未満" {% if budget == '300,000円未満' %} selected {% endif %}>300,000円未満</option>
+                                    <option value="350,000円未満" {% if budget == '350,000円未満' %} selected {% endif %}>350,000円未満</option>
+                                    <option value="400,000円未満" {% if budget == '400,000円未満' %} selected {% endif %}>400,000円未満</option>
+                                    <option value="400,000円以上" {% if budget == '400,000円以上' %} selected {% endif %}>400,000円以上</option>
+                                </select>
+                            </div>
+                            <div class="mt-4 mb-3">
+                                <h2>その他</h2>
+                                <div class="form-group">
+                                    <label for="note">その他・ご要望</label>
+                                    <textarea class="form-control" id="note" value="{{ note }}" name="note" rows="4" placeholder="ご自由にお書きください">{{ note }}</textarea>
+                                </div>
+                            </div>
+                            <input type="hidden" name="is_session" value="true">
+                            <div class="text-right">
+                                <button type="submit" class="btn btn btn-success mb-4">確認ページへ</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}

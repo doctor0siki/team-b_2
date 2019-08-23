@@ -6,7 +6,7 @@ use Model\Dao\User;
 
 
 // 会員登録ページコントローラ
-$app->get('/register/', function (Request $request, Response $response) {
+$app->get('/register', function (Request $request, Response $response) {
 
     //GETされた内容を取得します。
     $data = $request->getQueryParams();
@@ -17,7 +17,7 @@ $app->get('/register/', function (Request $request, Response $response) {
 });
 
 // 会員登録処理コントローラ
-$app->post('/register/', function (Request $request, Response $response) {
+$app->post('/register', function (Request $request, Response $response) {
 
     //POSTされた内容を取得します
     $data = $request->getParsedBody();
@@ -40,6 +40,8 @@ $app->post('/register/', function (Request $request, Response $response) {
     unset($data["password_re"]);
 
     //DBに登録をする。戻り値は自動発番されたIDが返ってきます
+    $now = new DateTime();
+    $data['created_at'] = $now->format("Y-m-d H:i:s");
     $id = $user->insert($data);
 
     //今登録された情報を発番されたIDで引き、会員情報を取得します（会員登録後の自動ログイン処理のため）
@@ -49,6 +51,5 @@ $app->post('/register/', function (Request $request, Response $response) {
     $this->session->set('user_info', $result);
 
     // 登録完了ページを表示します。
-    return $this->view->render($response, 'register/register_done.twig', $data);
-
+    return $this->view->render($response, 'item/list.twig', $data);
 });
