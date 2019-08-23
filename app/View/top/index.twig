@@ -1,5 +1,5 @@
 {#レイアウトを継承します#}
-{% extends "layout/layout.twig" %}
+{% extends "layout/toplayout.twig" %}
 
 {#HTMLのタイトルを定義します。#}
 {% block title %}TOP{% endblock %}
@@ -16,9 +16,9 @@
     <img src="/assets/images/MainImage.jpg" class="img-fluid mx-auto d-block w-75" alt="メイン画像">
     
     <div class="col text-center">
-        <a class="text-center">登録無料！簡単に欲しいカツラが見つかります！</a>
+        <a class="mx-auto">登録無料！簡単に欲しいカツラが見つかります！</a>
     </div>
-    <button type="button" class="btn btn-danger btn-lg mx-auto d-block mt-4 mb-4" style="width: 200px;">登録はこちら！</button>
+    <button onclick="location.href='/customer/register'" type="button" class="btn btn-danger btn-lg mx-auto d-block mt-4 mb-4" style="width: 300px; height: 100px; font-size: 40px;">登録はこちら！</button>
 
 
     
@@ -26,16 +26,26 @@
             <div class="flex-column w-auto">
 		<div class="card mx-auto">
                     <div class="card-body">
-		        <p class="border-bottom text-center" style="font-size:28px;">このサイトについて</p>
-                        <a>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ
-                        コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</a>
+		        <p class="border-bottom text-center" style="font-size:28px;">あなたに合うカツラを探します</p>
+                        <a class="mx-auto">あなたのほしいカツラと予算を提示することで、 <br /> あなたに合うカツラメーカーからアプローチが来ます。</a>
 
 		    </div>
 		</div>
             </div>
+	    <div class="card-group">
+		<div class="card">
+		    <img class="card-img-top" src="/assets/images/Text01.png" alt="画像１">
+		    <p class="card-text text-center">情報を登録</p>
+		</div>
+		<div class="card">
+		    <img class="card-img-top" src="/assets/images/Text02.jpg" alt="画像２">
+		    <p class="card-text text-center">あなた宛てにメーカーからアプローチ</p>
+		</div>
+		<div class="card">
+		    <img class="card-img-top" src="/assets/images/Text03.png" alt="画像３">
+		    <p class="card-text text-center">ご希望のカツラを提供</p>
+		</div>
+	    </div>
 	</div>
 
 	
@@ -43,24 +53,24 @@
 	    <div class="card text-white bg-info mb-0 mx-auto" style="max-width: 50rem;">
 	        <div class="card-header">ステップ１</div>
  		<div class="card-body">
-		    <h4 class="card-title">コンテンツコンテンツ</h4>
-		    <p class="card-text">コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
+		    <h4 class="card-title">情報を登録する</h4>
+		    <p class="card-text">上の「登録はこちら！」ボタンから入力ページに飛びます。 <br />各種情報と希望するカツラ（範囲、材質、紙質、色）、ご予算を記入して送信したら完了です。<br />メーカーからの連絡を待ちます。</p>
                 </div>
  	    </div>
 
 	    <div class="card text-white bg-primary mb-0 mx-auto" style="max-width: 50rem;">
                 <div class="card-header">ステップ２</div>
                 <div class="card-body">
-                    <h4 class="card-title">コンテンツコンテンツ</h4>
-                    <p class="card-text">コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
+                    <h4 class="card-title">メーカーからメールが届く</h4>
+                    <p class="card-text">あなたの入力した情報に合うメーカーが登録いただいたメールアドレスに連絡いたします。<br />（複数のメーカーから連絡が来る可能性があります。）</p>
                </div>
 
             </div>
 	    <div class="card text-white bg-success mb-0 mx-auto" style="max-width: 50rem;">
 		<div class="card-header">ステップ３</div>
 	        <div class="card-body">
-		    <h4 class="card-title">コンテンツコンテンツ</h4>
-		    <p class="card-text">コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
+		    <h4 class="card-title">カツラを購入</h4>
+		    <p class="card-text">希望に合うメーカーとやり取りし、購入する</p>
                 </div>
             </div>
 	</div>
