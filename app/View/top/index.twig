@@ -1,5 +1,5 @@
 {#レイアウトを継承します#}
-{% extends "layout/layout.twig" %}
+{% extends "layout/toplayout.twig" %}
 
 {#HTMLのタイトルを定義します。#}
 {% block title %}TOP{% endblock %}
@@ -10,16 +10,213 @@
 
 {#ここから表示したい情報を記載します。#}
 {% block page_content %}
-    <div class="page-header text-center">
-        <h1>サービス名</h1>
-    </div>
+
     <div class="container">
+
+    <img src="/assets/images/MainImage.jpg" class="img-fluid mx-auto d-block w-75" alt="メイン画像">
+    
+    <div class="col text-center">
+        <a class="mx-auto">登録無料！簡単に欲しいカツラが見つかります！</a>
+    </div>
+    <button onclick="location.href='/customer/register'" type="button" class="btn btn-danger btn-lg mx-auto d-block mt-4 mb-4" style="width: 300px; height: 100px; font-size: 40px;">登録はこちら！</button>
+
+
+    
+        <div class="box mt-4 mb-4">
+            <div class="flex-column w-auto">
+		<div class="card mx-auto">
+                    <div class="card-body">
+		        <p class="border-bottom text-center" style="font-size:28px;">あなたに合うカツラを探します</p>
+                        <a class="mx-auto">あなたのほしいカツラと予算を提示することで、 <br /> あなたに合うカツラメーカーからアプローチが来ます。</a>
+
+		    </div>
+		</div>
+            </div>
+	    <div class="card-group">
+		<div class="card">
+		    <img class="card-img-top" src="/assets/images/Text01.png" alt="画像１">
+		    <p class="card-text text-center">情報を登録</p>
+		</div>
+		<div class="card">
+		    <img class="card-img-top" src="/assets/images/Text02.jpg" alt="画像２">
+		    <p class="card-text text-center">あなた宛てにメーカーからアプローチ</p>
+		</div>
+		<div class="card">
+		    <img class="card-img-top" src="/assets/images/Text03.png" alt="画像３">
+		    <p class="card-text text-center">ご希望のカツラを提供</p>
+		</div>
+	    </div>
+	</div>
+
+	
         <div class="box">
+	    <div class="card text-white bg-info mb-0 mx-auto" style="max-width: 50rem;">
+	        <div class="card-header">ステップ１</div>
+ 		<div class="card-body">
+		    <h4 class="card-title">情報を登録する</h4>
+		    <p class="card-text">上の「登録はこちら！」ボタンから入力ページに飛びます。 <br />各種情報と希望するカツラ（範囲、材質、紙質、色）、ご予算を記入して送信したら完了です。<br />メーカーからの連絡を待ちます。</p>
+                </div>
+ 	    </div>
+
+	    <div class="card text-white bg-primary mb-0 mx-auto" style="max-width: 50rem;">
+                <div class="card-header">ステップ２</div>
+                <div class="card-body">
+                    <h4 class="card-title">メーカーからメールが届く</h4>
+                    <p class="card-text">あなたの入力した情報に合うメーカーが登録いただいたメールアドレスに連絡いたします。<br />（複数のメーカーから連絡が来る可能性があります。）</p>
+               </div>
+
+            </div>
+	    <div class="card text-white bg-success mb-0 mx-auto" style="max-width: 50rem;">
+		<div class="card-header">ステップ３</div>
+	        <div class="card-body">
+		    <h4 class="card-title">カツラを購入</h4>
+		    <p class="card-text">希望に合うメーカーとやり取りし、購入する</p>
+                </div>
+            </div>
+	</div>
+
+
+	<div class="box mt-4 mb-4">
             <div class="row">
-                ここにコンテンツが入る
+                <div class="col-lg-4">
+                    <div class="card">
+                    <img class="card-img-top" src="/assets/images/Company01.jpg" alt="Ａ社のイメージ" style="width:245px; height 200px;">
+                        <div class="card-body">
+                            <h4 class="card-title">Ａ社</h4>
+                            <p class="card-text">Ａ社の説明</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/assets/images/Company02.jpg" alt="Ｂのイメージ">
+                        <div class="card-body">
+                            <h4 class="card-title">Ｂ社</h4>
+                            <p class="card-text">Ｂ社の説明</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/assets/images/Company03.jpg" alt="Ｃ社のイメージ">
+                        <div class="card-body">
+                            <h4 class="card-title">Ｃ社</h4>
+                            <p class="card-text">Ｃ社の説明</p>
+                        </div>
+                    </div>
+                </div>
+
+	        <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/assets/images/Company04.jpg" alt="Ｄ社のイメージ">
+                        <div class="card-body">
+                            <h4 class="card-title">Ｄ社</h4>
+                            <p class="card-text">Ｄ社の説明</p>
+                        </div>
+                    </div>
+                </div>    
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/assets/images/Company05.jpg" alt="Ｅ社のイメージ">
+                        <div class="card-body">
+                            <h4 class="card-title">Ｅ社</h4>
+                            <p class="card-text">Ｅ社の説明</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/assets/images/Company06.jpg" alt="Ｆのイメージ">
+                        <div class="card-body">
+                            <h4 class="card-title">Ｆ社</h4>
+                            <p class="card-text">Ｆ社</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	    <thead class="thead-light">
+	    <tr >
+        	<th class="review_back"scope="col">かつら会社</th>
+	        <th scope="col">人</th>
+	        <th scope="col">評価</th>
+	        <th scope="col">口コミ</th>
+	    </tr>
+	    </thead>
+	        <tbody>
+		    {% for review in reviews %}
+
+		    <tr>
+    		       <td class="align-middle" scope="col">
+		         {{review.name}}
+		       </td>
+		       <td class="align-middle" scope="col">
+		         {{review.age}}歳{{review.gendor}}
+		       </td>
+		        <td class="align-middle" scope="col" >
+		              <p class="review_evalute">
+		              {{review.evalute}}
+		            </p>
+		        </td>
+		        <td class="align-middle" scope="col">{{ review.review }}</td>
+			    </tr>
+
+		        {% endfor %}
+		    </tbody>
+	        </table>
+	    </div>
+	</div>	
+
+
+	<div class="box mt-4 mb-4">	
+	    <button type="button" class="btn btn-success btn-lg mx-auto d-block">口コミ投稿はこちら</button>
+	</div>
+
+
+	<div class="box">
+            <div class="row">
+                <div class="card mx-auto border border-0 rouded">
+                    <div class="card-body"style="background-color: #deffde">
+		        <p class="border-bottom text-center" style="font-size:28px;">カツラの相場</p>
+			<a class="text-center">一般的にオーダーメイドだと２０万円前後、セミオーダーでは３万円前後からが相場となっています。質の高いものになれば３０万円４０万円とどうしても高くなってしまいます。決して安いお買い物ではありません。高ければいいというわけではなく、自分に合ったものを購入するのが大切です。カツラマッチではあなたの望んでいるカツラと費用を提示することで、ご予算内でご希望に合ったカツラを見つけられます。初めてカツラを買う方は上記の値段を参考にご予算を提示するといいかもしれません。<br /><br /></a>
+
+		    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+	    <div class="row">
+                <div class="col-lg-3 mx-auto d-block">
+                    <div class="card border-0">
+                       <div class="card-body">
+                            <button onclick="location.href='/inquire/'" type="button" class="btn btn-secondary btn-lg mx-auto d-block" style="width: 200px;">お問い合わせ</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mx-auto d-block">
+                    <div class="card border-0">
+                        <div class="card-body">
+			    <button onclick="location.href='/PrivacyPolicy'" type="button" class="btn btn-secondary btn-lg mx-auto d-block" style="width: 200px;">ポリシー</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
+    <br /><br /><br /><br />
 {% endblock %}
 
 {#共通フッタとして追記したい情報を記載します。#}
