@@ -71,5 +71,20 @@ class Company extends Dao
 
     }
 
-
+    public function getLatestFiveReviewsForTop(){
+        // クエリ作成
+        $sql = "
+            select
+                *
+            from
+                company
+            order by
+                datetime desc
+            limit
+                5
+        ";
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

@@ -141,7 +141,39 @@
         </div>
 
 
-	{% include 'company-show/reviewList.twig' %}	
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	    <thead class="thead-light">
+	    <tr >
+        	<th class="review_back"scope="col">かつら会社</th>
+	        <th scope="col">人</th>
+	        <th scope="col">評価</th>
+	        <th scope="col">口コミ</th>
+	    </tr>
+	    </thead>
+	        <tbody>
+		    {% for review in reviews %}
+
+		    <tr>
+    		       <td class="align-middle" scope="col">
+		         {{review.name}}
+		       </td>
+		       <td class="align-middle" scope="col">
+		         {{review.age}}歳{{review.gendor}}
+		       </td>
+		        <td class="align-middle" scope="col" >
+		              <p class="review_evalute">
+		              {{review.evalute}}
+		            </p>
+		        </td>
+		        <td class="align-middle" scope="col">{{ review.review }}</td>
+			    </tr>
+
+		        {% endfor %}
+		    </tbody>
+	        </table>
+	    </div>
+	</div>	
 
 
 	<div class="box mt-4 mb-4">	
@@ -184,7 +216,7 @@
             </div>
         </div> 
     </div>
-    <br /><br />
+    <br /><br /><br /><br />
 {% endblock %}
 
 {#共通フッタとして追記したい情報を記載します。#}
